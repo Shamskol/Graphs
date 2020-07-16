@@ -39,21 +39,21 @@ class Graph:
         q.enqueue(starting_vertex)
 
     # make a set to track if we've here before
-    visited = set()
+        visited = set()
     # while our queue is n't empty
-    while q.size() > 0 :
+        while q.size() > 0 :
 
     ## dequeue whatever is at the front of ourline, this is our current_node
-        current_node = q.dequeue()
+           current_node = q.dequeue()
 
     ## if we have n't visited this mode yet,
         if current_node not in visited:
     ### mark as visited
-            visited.add(current_node)
+           visited.add(current_node)
     ### get its neighbors,
-            neighbors = self.get_neighbors(current_node)
+           neighbors = self.get_neighbors(current_node)
     ### for each of the neighbors
-            for neighbor in neighbors:
+           for neighbor in neighbors:
     #### add to the queue
                 q.enqueue(neighbor)
 
@@ -104,16 +104,13 @@ class Graph:
         """
         # mark this vertex as visited
         visited.add(starting_vertex)
+        print(starting_vertex)
 
         # for each neighbor
         neighbors = self.get_neighbors(starting_vertex)
-
-        if len(neighbors) == 0:
-            return
-        for neighbor in []:
-
+        for neighbor in neighbors:
         ## if it's not visited
-            if neighbors not in visited:
+            if neighbor not in visited:
         ### recurse on the neighbor
                 self.dft_recursive(neighbor, visited)
 
@@ -127,7 +124,38 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        # make a queue
+        q = Queue()
+        #  make a set to track nodes if visited
+        visited = set()
+
+        path = [starting_vertex]
+        q.enqueue(path)
+        # while queue isn't empty
+        while q.size() > 0:
+
+        ## dequeue the node at the front of the line
+            current_path = q.dequeue()
+            current_node = current_path[-1]
+
+        ### if this node is our target node
+            if current_node ==  destination_vertex:
+        ####  return it !! return TRUE
+                return current_path
+        ### if not visited
+            if current_node not in visited:    
+        #### mark as visited
+                visited.add(current_node)
+        #### get its neighbors
+                neighbors = self.get_neighbors(current_node)
+        #### for each neighbor
+                for neighbor in neighbors:
+                    ## copy path s we don't mutate the original path to different nodes
+                    path_copy = current_path[:]
+                    path_copy.append(neighbor)
+           #### add to our queue
+                    q.enqueue(path_copy) 
+
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -137,7 +165,7 @@ class Graph:
         """
         pass  # TODO
 
-    def dfs_recursive(self, starting_vertex, destination_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex, visited=set()):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
@@ -145,7 +173,26 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        ## mark our node as visited
+        visited.add(vertex)
+        ## check if it's our target node, if so return
+
+        if vertex == destination_vertex:
+            return path
+        if len(path) == 0:
+            path.append(vertex)    
+        ## iterate over neighbors
+        neighbors = self.get_neighbors(vertex)
+        ### check if visited
+        for neighbor in neighbors:
+            if neighbor not in visited:
+        #### if not, recurse with a path
+                result = self.dfs_recursive(neighbor, destination_vertex, path + [neighbor], visited)
+
+        #### if this recuraion returns a path,
+                if result is not None:
+            #### return from here
+                    return result
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph

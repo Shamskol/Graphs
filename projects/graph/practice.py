@@ -1,3 +1,5 @@
+# From the values in the given dictionary obtain the sum of those values that are integers
+
 dict = {
   "cat": "bob",
   "dog": 23,

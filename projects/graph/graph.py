@@ -13,7 +13,7 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        self.vertices[vertex_id]
+        self.vertices[vertex_id] = set() 
 
     def add_edge(self, v1, v2):
         """
@@ -40,6 +40,7 @@ class Graph:
             v = q.dequeue()
             if v not in visited:
                 visited.add(v)
+                    
                 for next_v in self.get_neighbors(v):
                     q.enqueue(next_v)
 
@@ -48,28 +49,32 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        s =  Stack()
+        s = Stack()
         s.push(starting_vertex)
-        visited =  set()
-        while s.size() > 0 :
-            v =  s.pop()
+        visited = set()
+        while s.size() > 0:
+            v = s.pop()
             if v not in visited:
+                
+
                 visited.add(v)
-            for next_v in self.get_neighbors(v):    
-                s.push(next_v)
+                for next_v in self.get_neighbors(v):    
+                    s.push(next_v)
                      
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited = None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
         """
-        print(starting_vertex)
+        
         if visited is None:
             visited= set()
+            
         visited.add(starting_vertex)
+        print(starting_vertex)
         for n in self.get_neighbors(starting_vertex):
             if n not in visited:
                self.dft_recursive(starting_vertex= n, visited=visited)
@@ -115,7 +120,7 @@ class Graph:
                 s.push(new_path)
         
 
-    def dfs_recursive(self, starting_vertex, destination_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex, path= None, visited = None):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
