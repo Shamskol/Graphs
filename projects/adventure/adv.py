@@ -34,11 +34,12 @@ reverse_path = []
 visited = {}
 # state movement order
 m = {"n": "s", "e": "w", "s": "n", "w": "e"}
-#set the current_room that is occupied as visited
+#set the current_room that is occupied as visited and get exits(i.e neighbors)
 visited[player.current_room.id] = player.current_room.get_exits()
-#while visited rooms are less than rooms in room_graph
+#while visited rooms are less than rooms in room_graph. This loop continues until all the rooms are visited
 while len(visited)<len(room_graph):
-    #check to see if the room which the player is not as marked  as visited
+    #check to see if the room
+    #  which the player is not as marked  as visited
     if player.current_room.id not in visited:
         # mark the room as visited
         visited[player.current_room.id] = player.current_room.get_exits()
