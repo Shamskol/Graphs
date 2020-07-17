@@ -1,5 +1,5 @@
 import random
-from util import Stack, Queue  # These may come in handy
+from util import  Queue  # These may come in handy
 
 class User:
     def __init__(self, name):
@@ -48,6 +48,7 @@ class SocialGraph:
         # !!!! IMPLEMENT ME
 
         # Add users
+        # Use add_user num_users times
 
         # Create friendships
         for i in range(0, num_users):
@@ -126,7 +127,9 @@ class SocialGraph:
         return visited
 if __name__ == '__main__':
     sg = SocialGraph()
-    sg.populate_graph(10, 2)
+    sg.populate_graph(10,2)
+    print("friendships")
     print(sg.friendships)
     connections = sg.get_all_social_paths(1)
+    print("connections")
     print(connections)
