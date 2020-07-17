@@ -36,9 +36,9 @@ visited = {}
 m = {"n": "s", "e": "w", "s": "n", "w": "e"}
 #set the current_room that is occupied as visited
 visited[player.current_room.id] = player.current_room.get_exits()
-#while visited rooms are less than rooms in room_graph7
+#while visited rooms are less than rooms in room_graph
 while len(visited)<len(room_graph):
-    #check to see if the rom which the player is not as marked  as visited
+    #check to see if the room which the player is not as marked  as visited
     if player.current_room.id not in visited:
         # mark the room as visited
         visited[player.current_room.id] = player.current_room.get_exits()
