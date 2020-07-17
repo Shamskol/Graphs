@@ -39,7 +39,7 @@ visited[player.current_room.id] = player.current_room.get_exits()
 #while visited rooms are less than rooms in room_graph. This loop continues until all the rooms are visited
 while len(visited)<len(room_graph):
     #check to see if the room
-    #  which the player is not as marked  as visited
+    #  which the player is, is not as marked  as visited
     if player.current_room.id not in visited:
         # mark the room as visited
         visited[player.current_room.id] = player.current_room.get_exits()
