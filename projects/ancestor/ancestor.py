@@ -59,7 +59,7 @@ def earliest_ancestor(ancestors, starting_node):
 
     # Iterate over ancestors
     for ancestor in ancestors:
-        parent, child = ancestor;
+        parent, child = ancestor
 
         if parent not in g.vertices:
             g.add_vertex(parent)
