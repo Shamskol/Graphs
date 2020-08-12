@@ -1,1 +1,21 @@
-A set of nodes that is connected to one another 
+Connected Components
+--------------------
+A set of nodes that is connected to one another in some way.
+Graphs can have multiple sets of connected nodes that are disjoint.
+A set of connected nodes is called a "connected component".
+Counting connected components:
+Algorithm 1:
+While there are unvisited nodes:
+    Choose an unvisited node
+    Traverse from that node, marking each as visited
+    Increment connected component counter
+Algorithm 2:
+(Same as algorithm 1, but more like we might code it.)
+For each node in the graph:
+    If it's unvisited:
+        Traverse from that node, marking each as visited
+        Increment connected component counter
+
+
+
+
