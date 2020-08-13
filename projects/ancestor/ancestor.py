@@ -56,6 +56,7 @@ class Graph:
 def earliest_ancestor(ancestors, starting_node):
     # Create a graph
     g = Graph()
+    
 
     # Iterate over ancestors
     for ancestor in ancestors:
