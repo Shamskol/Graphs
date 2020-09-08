@@ -57,12 +57,33 @@ class Graph:
 
 
 
-    def dft(self, starting_vertex):
+    def dft(self, starting_vertex_id):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create a stack to hold nodes to visit
+        to_visit = Stack()
+        # Create a set to hold visited nodes
+        visited = set()
+        # Initialize: add the staring node to the stack
+        to_visit.push(starting_vertex_id)
+        # while stack not empty:
+        while  to_visit.size() > 0:
+            # pop off first entry
+            v = to_visit.pop()
+            # if not visited
+            if v not in visited:
+                # Visit the node(print it out)
+                print(v)
+
+                # Add it to the visited set
+                visited.add(v)
+                # enqueue all the neighbors
+                for n in self.get_neighbors(v):
+                    print(f"Adding: {n}")
+                    to_visit.push(n)
+
 
     def dft_recursive(self, starting_vertex):
         """
