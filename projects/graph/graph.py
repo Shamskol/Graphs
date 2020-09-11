@@ -52,7 +52,8 @@ class Graph:
                 visited.add(v)
                 # Do something with the node
                 
-                # Add all neighbors in the queue
+                # Add all neighbors in the queue by iterating over v's neighbors and enqueue them
+
                 for next_vert in self.get_neighbors(v):
                     q.enqueue(next_vert)
 
